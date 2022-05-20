@@ -1,14 +1,13 @@
 public class Example {
 
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
-        taskManager.startTaskRunningDaemon();
+        TaskManager.getTaskManager().startTaskRunningDaemon();
 
         Thread taskProducer1 = new Thread(() -> {
             while(true) {
                 try {
                     Thread.sleep((long) (Math.random() * 10000));
-                    taskManager.submitTask(new SampleTask());
+                    TaskManager.getTaskManager().submitTask(new SampleTask());
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -20,7 +19,7 @@ public class Example {
             while(true) {
                 try {
                     Thread.sleep((long) (Math.random() * 1000));
-                    taskManager.submitTask(new SampleTask());
+                    TaskManager.getTaskManager().submitTask(new SampleTask());
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
