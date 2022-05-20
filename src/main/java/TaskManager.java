@@ -46,6 +46,7 @@ public class TaskManager {
         Thread taskDaemon = new Thread(() -> {
             try {
                 while (true) {
+                    System.out.println("Checking for tasks");
                     Runnable task = taskQueue.dequeue();
                     taskExecutorPool.submit(task);
                 }
@@ -53,7 +54,8 @@ public class TaskManager {
                 throw new RuntimeException(e);
             }
         });
-        taskDaemon.setDaemon(true);
+        //Making this a daemon thread will kill the thread when there are no producers
+        //taskDaemon.setDaemon(true);
         taskDaemon.start();
     }
 }
