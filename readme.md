@@ -1,0 +1,2 @@
+# TaskQueue
+This is a simple task queue implementation in Java to experiment with threadpools. Tasks can be submitted and run asynchronously. A simple bocking queue is also implemented as an experimentation. The code is well commented and self-explanatory.
